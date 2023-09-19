@@ -19,11 +19,11 @@ app.use((req, res, next) => {
 // Route to fetch all restaurants
 app.get("/api/all-restaurants", async (req, res) => {
   try {
-    const apiUrl =
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=18.5204303&lng=73.8567437&offset=15&sortBy=RELEVANCE&pageType=SEE_ALL&page_type=DESKTOP_SEE_ALL_LISTING";
-    ("https://www.swiggy.com/dapi/restaurants/list/v5?lat=18.5204303&lng=73.8567437&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
-    const response = await fetch(apiUrl);
-    const data = await response.json();
+    // const apiUrl =
+    //   "https://www.swiggy.com/dapi/restaurants/list/v5?lat=18.5204303&lng=73.8567437&offset=15&sortBy=RELEVANCE&pageType=SEE_ALL&page_type=DESKTOP_SEE_ALL_LISTING";
+    // ("https://www.swiggy.com/dapi/restaurants/list/v5?lat=18.5204303&lng=73.8567437&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
+    // const response = await fetch(apiUrl);
+    // const data = await response.json();
 
     const restaurantList =
       data?.data?.cards?.find(
@@ -34,15 +34,15 @@ app.get("/api/all-restaurants", async (req, res) => {
 
     res.json(restaurantList);
   } catch (error) {
-    const restaurantList =
-      data?.data?.cards?.find(
-        (item) =>
-          item?.card?.card?.gridElements?.infoWithStyle?.restaurants !==
-          undefined
-      )?.card?.card?.gridElements?.infoWithStyle?.restaurants || [];
+    // const restaurantList =
+    //   data?.data?.cards?.find(
+    //     (item) =>
+    //       item?.card?.card?.gridElements?.infoWithStyle?.restaurants !==
+    //       undefined
+    //   )?.card?.card?.gridElements?.infoWithStyle?.restaurants || [];
 
-    res.json(restaurantList);
-    //res.status(500).json({ error: "Internal Server Error" });
+    // res.json(restaurantList);
+    res.status(500).json({ error: "Internal Server Error" });
   }
 });
 
@@ -51,15 +51,15 @@ app.get("/api/restaurant-menu/:resId", async (req, res) => {
   const { resId } = req.params;
 
   try {
-    const apiUrl = `https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=18.5204303&lng=73.8567437&restaurantId=${resId}&submitAction=ENTER`;
+    // const apiUrl = `https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=18.5204303&lng=73.8567437&restaurantId=${resId}&submitAction=ENTER`;
 
-    const response = await fetch(apiUrl);
-    const data = await response.json();
+    // const response = await fetch(apiUrl);
+    // const data = await response.json();
 
     res.json(cusines?.data);
   } catch (error) {
-    res.json(cusines?.data);
-    //res.status(500).json({ error: "Internal Server Error" });
+    //res.json(cusines?.data);
+    res.status(500).json({ error: "Internal Server Error" });
   }
 });
 
