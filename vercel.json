@@ -1,7 +1,7 @@
 {
   "version": 2,
   "name": "nodejs-express",
-  "builds": [{ "src": "index.js", "use": "@vercel/node" }],
+  "builds": [{ "src": "/(.*)", "use": "@vercel/node" }],
 
   "rewrites": [{ "source": "/(.*)", "destination": "/" }]
 }
