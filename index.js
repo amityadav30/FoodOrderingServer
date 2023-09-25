@@ -46,6 +46,8 @@ app.get("/api/all-restaurants", async (req, res) => {
   }
 });
 
+app.get("/", (req, res) => res.send("Home Page Route"));
+
 // Route to fetch restaurant menu by ID
 app.get("/api/restaurant-menu/:resId", async (req, res) => {
   const { resId } = req.params;
